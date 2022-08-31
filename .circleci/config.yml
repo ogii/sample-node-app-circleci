@@ -6,6 +6,7 @@ jobs:
       - image: circleci/python:3.7.3-node
     steps:
       - checkout
+      - run: npm ci
       - run:
           background: true
           command: node server.js
