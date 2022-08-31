@@ -34,7 +34,7 @@ jobs:
           echo "some text"
           #$(npm bin)/wait-on http://127.0.0.1:8000/test
           #curl http://127.0.0.1:8000/test
-          $(npm bin)/wait-on http://127.0.0.1:8000/health_check/
+          $(npm bin)/wait-on http://127.0.0.1:8000/chat
           echo "other text"
 
 workflows:
