@@ -24,6 +24,8 @@ jobs:
       - run:
           background: true
           command: |
+            sudo apt-get update
+            sudo apt-get install default-mysql-client
             mysql -h 127.0.0.1 -u root -p"$DB_ROOT_PASSWORD" -e"grant all on *.* to 'circleci'@'%';"
             node server.js
       - run: |
