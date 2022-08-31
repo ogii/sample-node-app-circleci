@@ -10,7 +10,7 @@ jobs:
       - run:
           background: true
           command: node server.js
-      - run: sleep 20s && curl http://127.0.0.1:8000/
+      - run: wait-on http-get://127.0.0.1:8000/ && curl http://127.0.0.1:8000/
 
 workflows:
   workflows:

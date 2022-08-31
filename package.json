@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ogii/sample-node-app-circleci/issues"
   },
-  "homepage": "https://github.com/ogii/sample-node-app-circleci#readme"
+  "homepage": "https://github.com/ogii/sample-node-app-circleci#readme",
+  "dependencies": {
+    "wait-on": "^6.0.1"
+  }
 }
