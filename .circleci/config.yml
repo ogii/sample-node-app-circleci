@@ -9,7 +9,7 @@ jobs:
       - run:
           background: true
           command: node server.js
-      - run: curl http://127.0.0.1:3000/
+      - run: sleep 20s && curl http://127.0.0.1:3000/
 
 workflows:
   workflows:
