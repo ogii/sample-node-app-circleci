@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/node:16.17.0
+    steps:
+      - checkout
+      - run:
+          background: true
+          command: node server.js
+      - run: curl http://127.0.0.1:3000/
+
+workflows:
+  workflows:
+    jobs:
+      - build
