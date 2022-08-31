@@ -28,12 +28,15 @@ jobs:
             sudo apt-get update
             sudo apt-get install default-mysql-client
             mysql -h 127.0.0.1 -u root -p"$DB_ROOT_PASSWORD" -e"grant all on *.* to 'circleci'@'%';"
-            #node server.js
             python3 /home/circleci/project/mysite/manage.py runserver
+      - run: 
+          background: true
+          command: |
+            node server.js
+            
       - run: |
           echo "some text"
-          #$(npm bin)/wait-on http://127.0.0.1:8000/test
-          #curl http://127.0.0.1:8000/test
+          $(npm bin)/wait-on http://127.0.0.1:8000/test
           $(npm bin)/wait-on http://127.0.0.1:8000/chat
           echo "other text"
 
