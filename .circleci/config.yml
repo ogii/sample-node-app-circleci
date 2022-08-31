@@ -21,18 +21,21 @@ jobs:
     steps:
       - checkout
       - run: npm ci
+      - run: python3 -m pip install -U channels
       - run:
           background: true
           command: |
             sudo apt-get update
             sudo apt-get install default-mysql-client
             mysql -h 127.0.0.1 -u root -p"$DB_ROOT_PASSWORD" -e"grant all on *.* to 'circleci'@'%';"
-            node server.js
+            #node server.js
+            python3 manage.py runserver
       - run: |
           echo "some text"
           #$(npm bin)/wait-on http://127.0.0.1:8000/test
           #curl http://127.0.0.1:8000/test
           $(npm bin)/wait-on http://127.0.0.1:8000/health_check/
+          echo "other text"
 
 workflows:
   workflows:
