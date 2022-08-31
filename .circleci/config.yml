@@ -4,12 +4,28 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.3-node
+        environment: 
+          PIPENV_VENV_IN_PROJECT: true
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: 'circleci'
+          DB_USERNAME: 'circleci'
+          DB_PASSWORD: 'circleci'
+          DB_ROOT_PASSWORD: 'rootpass'
+      - image: circleci/mysql:5.7.22
+        environment: 
+          MYSQL_DATABASE: 'circleci'
+          MYSQL_USER: 'circleci'
+          MYSQL_ROOT_PASSWORD: 'rootpass'
+          MYSQL_PASSWORD: 'circleci'
     steps:
       - checkout
       - run: npm ci
       - run:
           background: true
-          command: node server.js
+          command: |
+            mysql -h 127.0.0.1 -u root -p"$DB_ROOT_PASSWORD" -e"grant all on *.* to 'circleci'@'%';"
+            node server.js
       - run: |
           echo "some text"
           #$(npm bin)/wait-on http://127.0.0.1:8000/test
