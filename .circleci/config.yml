@@ -11,8 +11,10 @@ jobs:
           background: true
           command: node server.js
       - run: |
-          $(npm bin)/wait-on http://127.0.0.1:8000/
-          curl http://127.0.0.1:8000/
+          echo "some text"
+          #$(npm bin)/wait-on http://127.0.0.1:8000/test
+          #curl http://127.0.0.1:8000/test
+          $(npm bin)/wait-on http://127.0.0.1:8000/health_check/
 
 workflows:
   workflows:
