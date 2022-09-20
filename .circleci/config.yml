@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  build1:
     docker:
       - image: circleci/python:3.7.3-node
         environment: 
@@ -41,7 +41,7 @@ jobs:
           echo "other text"
 
 workflows:
-version: 2
+  version: 2
   workflows:
     jobs:
-      - build
+      - build1
