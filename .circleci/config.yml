@@ -15,7 +15,7 @@ jobs:
       - image: circleci/mysql:5.7.22
         environment: 
           MYSQL_DATABASE: 'circleci'
-          MYSQL_USER: 'circleci'
+          MYSQL_USER: 'circleci' 
           MYSQL_ROOT_PASSWORD: 'rootpass'
           MYSQL_PASSWORD: 'circleci'
     steps:
