@@ -41,7 +41,7 @@ jobs:
           echo "other text"
 
 workflows:
-  version: 2
+version: 2
   workflows:
     jobs:
       - build
